@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <link rel="stylesheet" href="notes.css" />
+  <title>NoteApp</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <!-- jQuery and JS bundle w/ Popper.js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <style>
+    .tablen {
+      width: 80%;
+      text-align: center;
+    }
+
+    .backtitle {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!--<p th:text="'Hello, ' + ${notes.size()} + '!'"></p>-->
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-notes" role="tabpanel" aria-labelledby="nav-notes-tab">
+      <div class="card-body backtitle">
+        <h5 class="display-2">NoteApp</h5>
+        <p class="display-6">All notes.</p>
+      </div>
+      <div style="text-align:center" class="row justify-content-center">
+        <table class="table table-light table-striped table-bordered border-secondary tablen" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Title</th>
+              <th scope="col">Content</th>
+              <th scope="col">Color</th>
+              <th scope="col" colspan="3"><a type="button" class="btn btn-outline-secondary" href="create">Create</a></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:if="${notes.empty}">
+              <td colspan="7"> No Notes Available </td>
+            </tr>
+            <tr th:each="note : ${notes}">
+              <td><span th:text="${note.id}">ID</span></td>
+              <td><span th:text="${note.title}">Title</span></td>
+              <td><span th:text="${note.content}">Content</span></td>
+              <td><span th:text="${note.color}">Color</span></td>
+              <td><a th:id="${note.id}" class="btn btn-outline-primary"
+                  th:href="@{/view/{id}(id=${note.id})}">View</button></td>
+              <td><a th:id="${note.id}" class="btn btn-outline-success"
+                  th:href="@{/update/{id}(id=${note.id})}">Update</button></td>
+              <td><a th:id="${note.id}" class="btn btn-outline-danger"
+                  th:href="@{/delete/{id}(id=${note.id})}">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</body>
+
+</html>

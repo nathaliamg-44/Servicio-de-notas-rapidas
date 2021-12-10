@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Update</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <style>
+        .tablen {
+            width: 60%;
+            text-align: center;
+        }
+
+        .backtitle {
+            text-align: center;
+            justify-content: center;
+        }
+
+        .formv {
+            border: 80%;
+            border-width: 3px;
+            border-style: solid;
+            border-color: rgb(92, 90, 90);
+            padding: 30px;
+          
+        }
+    </style>
+</head>
+
+<body>
+    <!--<p th:text="'Hello, ' + ${notes.size()} + '!'"></p>-->
+    <div class="tab-pane" id="nav-newnote" role="tabpanel" aria-labelledby="nav-newnote-tab">
+        <div class="card-body backtitle">
+            <h5 class="display-2">NoteApp</h5>
+        </div>
+        <div style="text-align:center;" class="row justify-content-center ">
+            <form class="tablen formv" action="#" th:action="@{/view/{id}(id=${note.id})}" th:object="${note}"
+                method="post">
+                <p class="display-6" th:text="${note.title}">View a note.</p>
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label type="text" class="form-textarea" style="white-space: pre" id="exampleInput2"
+                        th:text="${note.content}">
+                </div>
+                <div class="mb-3">
+                    <label type="text" class="form-label" id="exampleInput3" th:text="${note.color}"></label>
+                </div>
+                <button type="submit" href="/notes" class="btn btn-primary">Back</button>
+            </form>
+        </div>
+</body>
+
+</html>

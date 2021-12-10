@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="notes.css" />
+    <title>NoteApp</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <style>
+        .tablen {
+            width: 60%;
+            text-align: center;
+        }
+
+        .backtitle {
+            text-align: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!--<p th:text="'Hello, ' + ${notes.size()} + '!'"></p>-->
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane  show active" id="nav-notes" role="tabpanel" aria-labelledby="nav-notes-tab">
+            <div class="tab-pane" id="nav-newnote" role="tabpanel" aria-labelledby="nav-newnote-tab">
+                <div style="text-align:center;" class="card-body backtitle">
+                    <h5 class="display-2">NoteApp</h5>
+                    <p class="display-6">Create a new note.</p>
+                </div>
+                <div style="text-align:center;" class="row justify-content-center">
+                    <form class="tablen" action="#" th:action="@{/create}" th:object="${newNote}" method="post">
+                        <div class="mb-3">
+                            <label for="exampleInput" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="exampleInput" th:field="*{title}">
+
+                            </input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInput2" class="form-label">Content</label>
+                            <textarea type="text" class="form-control text pre_wrap" id="exampleFormControlTextarea1" th:field="*{content}"></textarea>
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="exampleInput3" class="form-label">Color</label>
+                            <input type="text" class="form-control" id="exampleInput3" th:field="*{color}">
+                        </div>
+                        <button type="submit" href="/notes" class="btn btn-primary">Back</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+</body>
+
+</html>
